@@ -13,7 +13,7 @@
   const menuItems = [{ name: "Github", url: "https://github.com/narze/nunmun" }]
 
   const description = "Build a single page app with Svelte, quickly."
-  const imageUrl = "https://sv1.picz.in.th/images/2021/10/24/uq7wGE.png"
+  const imageUrl = "https://raw.githubusercontent.com/narze/timelapse/main/projects/nunmun_home.png"
   const gtagId = null
 
   if (!location.hash || location.hash === "#") {
