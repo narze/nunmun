@@ -5,7 +5,8 @@
   import Menu from "./lib/Menu.svelte"
   import Social from "./lib/Social.svelte"
 
-  let nowPos = parseInt(location.hash.slice(1, location.hash.length))
+  let nowPos = Number(location.hash.slice(1, location.hash.length))
+  let listLength = Infinity;
 
   const url = `https://nunmun.vercel.app/#${nowPos}`
   const title = "นั่นมัน....!"
@@ -39,6 +40,7 @@
         nunmunConfig.push({ title: nunmun[1], question: nunmun[2], pos: position })
       }
     })
+    listLength = nunmunConfig.length;
     return nunmunConfig
   }
 
@@ -94,13 +96,15 @@
       </p>
       <div class="relative max-w-lg">
         <button
+          disabled={nowPos === 1}
           on:click={() => prev()}
-          class="absolute shadow-lg left-0 px-4 py-2 border border-black bg-blue-600 rounded-lg hover:bg-blue-700 text-white transition duration-200 ease-in-out"
+          class="absolute shadow-lg left-0 px-4 py-2 border border-black bg-blue-600 rounded-lg hover:bg-blue-700 text-white transition duration-200 ease-in-out disabled:opacity-50"
           >ก่อนหน้า</button
         >
         <button
+          disabled={nowPos === listLength}
           on:click={() => next()}
-          class="absolute shadow-lg right-0 px-4 py-2 border border-black bg-blue-600 rounded-lg hover:bg-blue-700 text-white transition duration-200 ease-in-out"
+          class="absolute shadow-lg right-0 px-4 py-2 border border-black bg-blue-600 rounded-lg hover:bg-blue-700 text-white transition duration-200 ease-in-out disabled:opacity-50"
           >ถัดไป</button
         >
       </div>
