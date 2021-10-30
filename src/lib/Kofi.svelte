@@ -41,7 +41,7 @@
     async
     defer
     type="text/javascript"
-    src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"></script>
+    src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js" />
 </svelte:head>
 
 {#if name}
