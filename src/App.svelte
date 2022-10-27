@@ -4,6 +4,7 @@
   import Kofi from "./lib/Kofi.svelte"
   import Menu from "./lib/Menu.svelte"
   import Social from "./lib/Social.svelte"
+  import AudioPlayer from "./lib/AudioPlayer.svelte"
 
   let nowPos = Number(location.hash.slice(1, location.hash.length))
   let listLength = Infinity;
@@ -88,12 +89,20 @@
         >
       </div>
     {:then value}
-      <h1 class="title m-4 text-5xl md:text-7xl text-black font-bold text-center">
-        <a href="#{value[nowPos - 1].pos}">{value[nowPos - 1].title}</a>
-      </h1>
-      <p class="description m-4 text-xl md:text-3xl text-black text-center">
-        {value[nowPos - 1].question}
-      </p>
+      {#if value[nowPos - 1]}
+        <h1 class="title m-4 text-5xl md:text-7xl text-black font-bold text-center">
+          <a href="#{value[nowPos - 1].pos}">{value[nowPos - 1].title}</a>
+        </h1>
+        <p class="description m-4 text-xl md:text-3xl text-black text-center">
+          {value[nowPos - 1].question}
+        </p>
+        <AudioPlayer
+          src="https://tts-api.vercel.app/api/tts?lang=th-TH&text={value[nowPos - 1].title} {value[nowPos - 1].question}"
+        />
+      {:else}
+        <h1 class="title m-4 text-5xl md:text-7xl text-black font-bold text-center">...</h1>
+        <p class="description m-4 text-xl md:text-3xl text-black text-center">...</p>
+      {/if}
       <div class="relative max-w-lg">
         <button
           disabled={nowPos === 1}
