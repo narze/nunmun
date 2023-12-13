@@ -60,6 +60,6 @@
 - ไม่แก้ไขไฟล์ README.md โดยตรง (ไฟล์จะถูกจัดการด้วย append_on_merge GitHub action)
 - สร้างไฟล์ในโฟล์เดอร์ input ด้วย[ลิงก์นี้](https://github.com/narze/nunmun/new/main?filename=input/) โดยใช้รูปแบบตามตัวอย่าง (อย่าลืม `-` นำหน้าบรรทัด)
 ```markdown
-- นั่นมันฟองดู! ที่เอาไว้ล้างจาน
+ - นั่นมันฟองดู! ที่เอาไว้ล้างจาน
 ```
 - สร้าง Pull Request
