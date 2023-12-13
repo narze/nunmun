@@ -25,15 +25,27 @@
   async function main() {
     const data = await fetch("https://raw.githubusercontent.com/narze/nunmun/main/README.md")
     const text = await data.text()
-    const list = text.split("\n").filter((line) => /(- .*)/.test(line))
+    const list: string[] = []
+
+    for (const line of text.split("\n")) {
+      if (line.includes("# Contribution")) {
+        break
+      }
+  
+      if (/(- .*)/.test(line)) {
+        list.push(line)
+      }
+    }
+
     let position = 2
-    var nunmunConfig = [
+    const nunmunConfig = [
       {
         title: "นั่นมัน....!",
         question: "ที่เป็นปลากรายน่ะเหรอ?",
         pos: 1,
       },
     ]
+
     list.forEach((line) => {
       let nunmun = line.match(/(?:- (.*!) (.*(?:\?|.*)))/)
       position += 1
